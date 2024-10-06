@@ -1,0 +1,80 @@
+{% extends 'admin-panel/layout.html' %}
+
+{% block content %}
+
+
+{% load tailwind_filters %}
+
+<div class="flex flex-1 w-full">
+    <div class="w-9/12">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Id
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Category Title
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Category Description
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Slug
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+
+            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{category.id}}
+                </th>
+                <td class="px-6 py-4">
+                    {{category.cat_title}}
+                </td>
+                <td class="px-6 py-4">
+                    {{category.cat_description}}
+                </td>
+                <td class="px-6 py-4">
+                    {{category.slug}}
+                </td>
+                <td class="px-6 py-4 space-x-3">
+                    <a href="{% url 'admin.category.delete' category.id %}" class="font-medium text-red-600 dark:text-blue-500 hover:underline">Delete</a>
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                </td>
+            </tr>
+ 
+            {% endfor %}
+           
+          
+        </tbody>
+    </table>
+</div>
+
+    </div>
+    <div class="w-3/12">
+        <div class="border bg-gray-100 p-4">
+            <div class="flex-1">
+            <h2 class="text-2xl font-black">Insert Category</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+
+                {{form|crispy}}
+
+                <div class="mb-3">
+                    <input type="submit" value="Create category" class="bg-teal-800 text-white px-3 py-2 w-full rounded-lg">
+                </div>
+            </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

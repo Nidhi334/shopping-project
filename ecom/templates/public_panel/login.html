@@ -1,0 +1,28 @@
+{% extends 'public_panel/layout.html' %}
+
+{% block content %}
+{% load tailwind_filters %}
+
+
+<div class="flex flex-1 justify-center items-center">
+    <div class="w-4/ mt-10">
+        <div class="border p-5 rounded-xl">
+            <div class="flex flex-1">
+                <h1 class="text-2xl border-b w-full font-black pb-3">Login Here</h1>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+    
+    
+                {{form|crispy}}
+                <div class="mb-3">
+                    <input type="submit" class="bg-teal-700 text-white px-3 py-2 w-full">
+    
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

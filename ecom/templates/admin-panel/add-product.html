@@ -1,0 +1,15 @@
+{% extends 'admin-panel/layout.html' %}
+
+
+{% block content %}
+{% load tailwind_filters %}
+  <div class="flex flex-1">
+    <form action="" method="post" enctype="multipart/form-data" class="grid grid-cols-2 w-full gap-5">
+        {% csrf_token %}
+
+        {{form|crispy}}
+        <button type="submit" class="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">Submit</button>
+    </form>
+  </div>
+
+{% endblock content %}

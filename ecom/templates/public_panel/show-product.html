@@ -1,0 +1,34 @@
+{% extends 'public_panel/layout.html' %}
+
+{% block content %}
+
+
+<div class="flex flex-1 px-[5%] my-10 gap-5 ">
+    <div class="w-4/12 ">
+        <img src="{{products.image.url}}" width="50%" class="">
+
+
+
+    </div>
+    <div class="w-8/12 ">
+       <div class="flex flex-col gap-5">
+        <h1 class="text-2xl font-bold">Title:{{products.title}}</h1>
+        <p class="text-xl font-semibold">price:{{products.discount_price}}<del class="text-xs text-red-900">{{products.price}}</del></p>
+        <p class="text-md text-gray-600">Description:{{products.description}}</p>
+
+        <div class="flex gap-5">
+            <a href="{% url 'public.add_to_cart' products.slug %}" class=" flex bg-pink-800 items-center gap-2 text-white px-4 py-3 text-2xl rounded-xl">
+                <svg class="size-8 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                  </svg>
+                  <span>Add To Cart</span></a>
+            <a href="" class="bg-cyan-500 text-white px-4 py-3 text-2xl rounded-xl">Buy Now</a>
+        </div>
+       </div>
+
+
+    </div>
+</div>
+
+
+{% endblock content %}
